@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option go_package = "grpc-server/proto";
+package interaccion;
+
+service GimService {
+  rpc AsignarCombate (AsignacionCombateRequest) returns (AsignacionCombateResponse);
+}
+
+message AsignacionCombateRequest{
+    string combate_id = 1;
+	string torneo_id = 2;
+	EntrenadorCombate entrenador_1 = 3;
+	EntrenadorCombate entrenador_2 = 4;
+	string region = 5;
+}
+
+message EntrenadorCombate{
+    string id = 1;
+	string nombre = 2;
+	int32 ranking = 3;
+}
+
+message AsignacionCombateResponse{
+    string torneo_id = 1;
+    string id_entrenador_1 = 2;
+    string nombre_entrenador_1 = 3;
+    string id_entrenador_2 = 4;
+    string nombre_entrenador_2 = 5;
+    string id_ganador = 6;
+    string nombre_ganador = 7;
+    string fecha = 8;
+    string tipo_mensaje = 9;
+}
