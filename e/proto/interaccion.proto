@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option go_package = "grpc-server/proto";
+package interaccion;
+
+service LcpService {
+  rpc ConsultarEntrenador(ConsultarEntrenadorRequest) returns (ConsultarEntrenadorResponse);
+  rpc ConsultarTorneosDisponibles(TorneosDisponiblesRequest) returns (TorneosDisponiblesResponse);
+  rpc InscribirseEnTorneo(InscripcionRequest) returns (InscripcionResponse);
+}
+
+message ConsultarEntrenadorRequest {
+  string entrenador_id = 1;
+}
+
+message ConsultarEntrenadorResponse {
+  string id = 1;
+  string nombre = 2;
+  string region = 3;
+  int32 ranking = 4;
+  string estado = 5;
+  int32 suspension = 6;
+}
+
+message TorneosDisponiblesRequest {}
+
+message TorneosDisponiblesResponse {
+  repeated Torneo torneos = 1;
+}
+
+message Torneo {
+  string id = 1;
+  string region = 2;
+}
+
+message InscripcionRequest {
+  string torneo_id = 1;
+  string entrenador_id = 2;
+}
+
+message InscripcionResponse {
+  string inscripcion = 1;
+}
