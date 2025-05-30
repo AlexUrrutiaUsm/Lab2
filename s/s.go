@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	conn, err := amqp.Dial("amqp://guest:guest@host.docker.internal:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@10.35.168.24:5672/")
 	if err != nil {
 		log.Fatalf(" Error al conectar : %v", err)
 	}
