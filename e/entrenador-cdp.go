@@ -92,7 +92,7 @@ func guardarHistorialLocal(id string, evento string) {
 }
 
 func consumirColaNoti() {
-	conn, err := amqp.Dial("amqp://guest:guest@host.docker.internal:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@10.35.168.26:5672/")
 	if err != nil {
 		return
 	}
@@ -151,7 +151,7 @@ func mostrarHistorialLocal(id string) {
 }
 
 func procesarColaCDP(lcpClient pb.LcpServiceClient) {
-	conn, err := amqp.Dial("amqp://guest:guest@host.docker.internal:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@10.35.168.23:5672/")
 	if err != nil {
 		log.Fatalf("Error al conectar a RabbitMQ: %v", err)
 	}
@@ -235,7 +235,7 @@ func procesarColaCDP(lcpClient pb.LcpServiceClient) {
 }
 
 func main() {
-	connLcp, err := grpc.Dial("host.docker.internal:50052", grpc.WithInsecure())
+	connLcp, err := grpc.Dial("10.35.168.23:50052", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("Error al conectar al servidor de la LCP: %v", err)
 	}
