@@ -54,7 +54,7 @@ func EncriptarAES256(datos []byte, clave string) (string, error) {
 func Mandar(queueInfo *pb.AsignacionCombateResponse, clave string) {
 	var errFinal error
 	for intento := 1; intento <= 3; intento++ {
-		conn, err := amqp.Dial("amqp://guest:guest@host.docker.internal:5672/")
+		conn, err := amqp.Dial("amqp://guest:guest@10.35.168.23:5672/")
 		if err != nil {
 			errFinal = fmt.Errorf("intento %d: error al conectar: %v", intento, err)
 			time.Sleep(1 * time.Second)
