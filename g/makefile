@@ -13,4 +13,4 @@ docker-build:
 	docker build -t $(DOCKER_IMAGE) .
 
 docker-run:
-	docker run -it -p $(PORT):$(PORT) --name $(DOCKER_CONTAINER) $(DOCKER_IMAGE)
+	docker run -d -p $(PORT):$(PORT) --name $(DOCKER_CONTAINER) $(DOCKER_IMAGE)
