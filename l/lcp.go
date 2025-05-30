@@ -120,7 +120,7 @@ func (s *LcpServer) ProcesarResultadoCombate(resultado AsignacionCombateResponse
 }
 
 func (s *LcpServer) ConsumirResultados() {
-	conn, err := amqp.Dial("amqp://guest:guest@host.docker.internal:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@10.35.168.24:5672/")
 	if err != nil {
 		log.Fatalf("Error al conectar a RabbitMQ: %v", err)
 	}
@@ -155,7 +155,7 @@ func (s *LcpServer) ConsumirResultados() {
 }
 
 func (s *LcpServer) DesarrollarTorneo(r, t int) {
-	connLcp, err := grpc.Dial("host.docker.internal:50053", grpc.WithInsecure())
+	connLcp, err := grpc.Dial("10.35.168.25:50053", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("Error al conectar al servidor de los gimnasios pokemon: %v", err)
 	}
@@ -326,7 +326,7 @@ func (s *LcpServer) InscribirseEnTorneo(ctx context.Context, req *pb.Inscripcion
 }
 
 func PublishToQueue(queueName string, message []byte) error {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@10.35.168.26:5672/")
 	if err != nil {
 		return err
 	}
